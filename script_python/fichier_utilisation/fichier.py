@@ -16,4 +16,11 @@
         for j in range(1,21):
             f.write(str(i)+'*'+str(j)+'='+str(i*j)+'\n')'''
 
-        
+'''with open ('journal.txt','a',) as f:
+    chaine = "nimporte quoi"
+    while chaine !=  '':
+        chaine = input('>> ')
+        f.write(f'{chaine} \n')'''
+
+
+
