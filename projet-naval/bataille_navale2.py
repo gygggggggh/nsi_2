@@ -35,10 +35,6 @@ def tirer():
 
 
     
-   
-
-
-
 
 #print(print_plat(plat))
 #for i in range (100):
