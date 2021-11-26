@@ -15,12 +15,19 @@
         f.write(f'table de {str(i)} \n')
         for j in range(1,21):
             f.write(str(i)+'*'+str(j)+'='+str(i*j)+'\n')'''
-
+#11
 '''with open ('journal.txt','a',) as f:
     chaine = "nimporte quoi"
     while chaine !=  '':
         chaine = input('>> ')
         f.write(f'{chaine} \n')'''
 
+#12 
 
-
+def isFile(filename):
+    try:
+        with open (filename,'r') as f:
+            print(True)
+    except IOError:
+          print(False)
+isFile('/home/dylans/Bureau/porge.txt')
