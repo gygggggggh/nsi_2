@@ -10,11 +10,10 @@
             dernier = mot'''
         
 
-with open('tables.txt','w') as f:
+'''with open('tables.txt','w') as f:
     for i in range(2,31):
         f.write(f'table de {str(i)} \n')
         for j in range(1,21):
-            f.write(str(i)+'*'+str(j)+'='+str(i*j)+'\n')
+            f.write(str(i)+'*'+str(j)+'='+str(i*j)+'\n')'''
 
         
-            
