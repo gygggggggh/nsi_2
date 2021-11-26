@@ -1,5 +1,4 @@
 # sript programme_tets.py
-
 '''with open('mots_francais.txt','r',encoding='utf-8-sig') as f:
     while True:
         mot = f.readline().strip()
@@ -22,12 +21,31 @@
         chaine = input('>> ')
         f.write(f'{chaine} \n')'''
 
-#12 
+#12
 
 def isFile(filename):
     try:
         with open (filename,'r') as f:
-            print(True)
+            return True
     except IOError:
-          print(False)
-isFile('/home/dylans/Bureau/porge.txt')
+          return False
+#
+
+#13
+
+def show_file(filename):
+    if isFile(filename):
+        with open(filename,'r',encoding='utf-8') as f:
+            for ligne in f:
+                print(ligne.strip())
+    else:
+        print('ce fichier est pas dans cette realité')
+
+
+
+def copy_file(filename,copy_file):
+    if isFile(filename):
+        with open(filename,'r') as original , open(copy_file,'w') as copy_file:
+            for ligne in original :
+                copy_file.write(ligne)
+copy_file('/home/dylans/Bureau/porge.txt','porche.txt')
