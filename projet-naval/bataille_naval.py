@@ -19,7 +19,7 @@
 
 from bataille_navale1 import *
 from bataille_navale2 import *
-from time import *
+
 
 
 def main():
@@ -52,7 +52,6 @@ def main():
         exit()
     else:
         print('tu dois choisir entre 1 ou 2 ou 3 ')
-        sleep(3)
         main()
         
 main() # <--------------- on execute le code ici

@@ -65,16 +65,17 @@ def tirer():
 # On compare la fonction tir à la fonction du bateau mystère pour savoir si les données concordent 
 
 def result(bat, t):
+    coup = 0
     # On compare la fonction tir à la fonction du bateau mystère pour savoir si les données concordent 
     if bat[0] == t[0] and bat[1] != t[1] :
         print("\nEn vue sur la colone !\n")
-        
+        coup +=1
     if bat[1] != t[1] and bat[0] == t[0] :
         print("\nEn vue sur la ligne!\n ")
-        
+        coup += 1
     if bat[0] == t[0] and bat[1] == t[1] :
         print('\ncoulé\n')
-        fichier()
+        fichier(coup)
     else:
         print("\nÀ l’eau\n")
         
@@ -92,7 +93,8 @@ def niveau1() :
         sleep(1)
         
         
-def fichier() :
+def fichier(coup) :
+    Coup = coup
     i = 0
     nombre_unite = 1   
     nom = str(input('Choisi un nom : '))  
@@ -116,7 +118,7 @@ def fichier() :
     date= datetime.now()    
     date_2 = date.strftime("%Y-%m-%d %H:%M:%S ")
     with open("score.txt","a",) as obj :
-        obj.write(f'\n{nombre_unite} {lenth_nom} {nom} {date_2}\n') 
+        obj.write(f'\n{nombre_unite} {lenth_nom} {nom} {Coup}{date_2}\n') 
     print(coup)
     exit()
     
