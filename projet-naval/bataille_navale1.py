@@ -62,9 +62,10 @@ def tirer():
                 return  x,y 
 
 # On compare la fonction tir à la fonction du bateau mystère pour savoir si les données concordent 
-coup = 0 
+ 
 def result(bat, t,coup):
     # On compare la fonction tir à la fonction du bateau mystère pour savoir si les données concordent
+    coup  = 0
     if bat[0] == t[0] and bat[1] != t[1] :
         print("\nEn vue sur la colone !\n")
         coup += 1
@@ -89,7 +90,7 @@ def result(bat, t,coup):
         date= datetime.now()    
         date_2 = date.strftime("%Y-%m-%d %H:%M:%S ")
         with open("score.txt","a",) as obj :
-            obj.write(f'\n{nombre_unite} {lenth_nom} {nom} {coup} {date_2}\n') 
+            obj.write(f'\n{nombre_unite} {lenth_nom} {nom} {coup} {date_2}') 
         print(coup)
         
         exit()

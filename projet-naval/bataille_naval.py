@@ -37,7 +37,7 @@ def main():
 ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═╝ ╚══════╝╚══════╝╚══════╝    ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝╚══════╝ 
                                                                         
         ╔═══════════════════════════════════════════════════════╗ 
-        ║ [Niveau 1]           [Niveau 2]            [Niveau 3] ║
+        ║ [Niveau 1]           [Niveau 2]          [HIGH SCORE] ║
         ╚═══════════════════════════════════════════════════════╝   
         
          ▶ ''')
@@ -47,11 +47,12 @@ def main():
     if reponse ==  '2' :          
         print('\nWORK IN PROGRESS\n ')
         exit()
-    if reponse ==  '3' :
-        print('\nWORK IN PROGRESS\n ')
-        exit()
+    if reponse ==  'HIGH SCORE' :
+        with open ('score.txt', 'r') as f:
+            for ligne in f:
+                print(ligne)
     else:
-        print('tu dois choisir entre 1 ou 2 ou 3 ')
+        print('tu dois choisir entre 1 ou 2 ou HIGH SCORE ')
         main()
         
 main() # <--------------- on execute le code ici
