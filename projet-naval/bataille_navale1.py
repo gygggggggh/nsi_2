@@ -70,9 +70,9 @@ def tirer():
 def result(bat, t):
 
     # On compare la fonction tir à la fonction du bateau mystère pour savoir si les coordonnées concordent.
-    # Si les
+    # Si une des conditions est remplie, comme la concordination exacte des coordonnées le programme
+    # imprimera dans le terminal le résultat approprié à la situation.
 
-    coup  = 0
     if bat[0] == t[0] and bat[1] != t[1] :
         print("\nEn vue sur la colone !\n")
         coup += 1
