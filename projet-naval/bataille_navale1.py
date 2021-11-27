@@ -18,9 +18,11 @@
                <------------------------------------------------->
 '''                      
 
-coup = 0
 
-from os import EX_DATAERR, write
+
+# Importation des modules nécessaires au bon fonctionnement du programme.
+
+from os import  write
 from random import randint
 from datetime import datetime
 '''NIVEAU 1'''
@@ -29,15 +31,19 @@ from datetime import datetime
 
 
 def generer_bat() :
-    # on génère le bateau mystère avec le module randint de random
+
+    # On génère le bateau mystère dans un emplacement aléatoire avec le module randint de random.
+    
     xB = randint (1, 10)
     yB = randint (1, 10)
     return (xB, yB)
 
 
 def tirer():
-    #On crée la fonction de tir grace a l'utlisateurs (fonction input) 
-    #puis on regarde si il respecte les regles 
+
+    # On crée la fonction de tir grâce à l'utilisateur (fonction input).
+    # Puis le programme vérifie si le joueur respecte les règles : si oui, le programme continue, 
+    # si non, le programme se relance.
     
     while True:
         try:
@@ -60,40 +66,24 @@ def tirer():
                 tirer() 
             else:
                 return  x,y 
-
-# On compare la fonction tir à la fonction du bateau mystère pour savoir si les données concordent 
  
-def result(bat, t,coup):
-    # On compare la fonction tir à la fonction du bateau mystère pour savoir si les données concordent
+def result(bat, t):
+
+    # On compare la fonction tir à la fonction du bateau mystère pour savoir si les coordonnées concordent.
+    # Si les
+
     coup  = 0
     if bat[0] == t[0] and bat[1] != t[1] :
         print("\nEn vue sur la colone !\n")
         coup += 1
     if bat[1] != t[1] and bat[0] == t[0] :
-        print("\nEn vue sur la ligne!\n ")
+        print("\nEn vue sur la ligne !\n ")
         coup += 1
     if bat[0] == t[0] and bat[1] == t[1] :
-        print('\ncoulé\n'+str(coup))
-        coup += 1
-        i = 0
-        nombre_unite = 1   
-        nom = str(input('Choisi un nom : '))  
-        if nom == '':
-           nom = 'inviter'    
-        for chr in nom:
-            i += 1
-        lenth_nom = i
-        if lenth_nom > 9 :
-            nombre_unite += 1    
-        if lenth_nom > 99:
-            print("ce nom est trop grand")
-        date= datetime.now()    
-        date_2 = date.strftime("%Y-%m-%d %H:%M:%S ")
-        with open("score.txt","a",) as obj :
-            obj.write(f'\n{nombre_unite} {lenth_nom} {nom} {coup} {date_2}') 
-        print(coup)
-        
+        print('\nCoulé !\n')
+        fichier()
         exit()
+        
     else:
         print("\nÀ l’eau\n")
         
@@ -102,13 +92,32 @@ def result(bat, t,coup):
  
  
 def niveau1() :
-# on crée une fonction pour utilise ce code en boucle 
+    
+# On crée une fonction pour utiliser ce code en boucle.
+
     bat = generer_bat()
     while True:
         print(bat)
         t = tirer()
-        result(bat, t,coup)
+        result(bat, t)
         
         
+# Création de la fonction qui enregistre le nom des utilisateurs et la date à laquelle ils ont joué.
 
-
+def fichier():
+    lenth_nom  = 0
+    nombre_unite = 1   
+    nom = str(input('Choisis un nom : '))  
+    if nom == '':
+        nom = 'invité'    
+    for chr in nom:
+       lenth_nom  += 1
+    if lenth_nom > 9 :
+        nombre_unite += 1    
+    if lenth_nom > 99:
+        print("ce nom est trop grand")
+    date= datetime.now()    
+    date_2 = date.strftime("%Y-%m-%d %H:%M:%S ")
+    with open("score.txt","a",) as obj :
+        obj.write(f'\n{nombre_unite} {lenth_nom} {nom} {date_2}') 
+    return nombre_unite , lenth_nom 

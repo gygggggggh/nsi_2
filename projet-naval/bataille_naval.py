@@ -1,4 +1,4 @@
-# NSI 1ere - Projet Bataille navale - octobre 2020
+# NSI 1ère - Projet Bataille navale - Octobre 2020
 
 '''                                        |_
                                        ---/ |
@@ -16,6 +16,7 @@
                <------------------------------------------------->
 '''                      
 
+# Importation des fichiers contenant les fonctions nécessaire au bon fonctionnement du programme.
 
 from bataille_navale1 import *
 from bataille_navale2 import *
@@ -23,19 +24,22 @@ from bataille_navale2 import *
 
 
 def main():
-    #cette fonction sert a chosir quelle niveau jouer en demandant a un utilisateur 
-    # un chiffre entre 1 et 3
-    
-    # si le texte est s'affiche mal il faut agrandir la fenetre 
+
+    # Cette fonction donne la possibilité au joueur de choisir le niveau auquel il veut jouer. 
+    # Pour choisir le niveau, le joueur devra entrer un chaine entre 1, 2 ou HIGH SCORE.    
+    # Si le texte s'affiche mal, il faut agrandir la fenêtre. 
+
     reponse = input('''
 
-██████╗  █████╗ ████████╗ █████╗  ██╗ ██╗     ██╗     ███████╗    ███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗     
-██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗ ██║ ██║     ██║     ██╔════╝    ████╗  ██║██╔══██╗██║   ██║██╔══██╗██║     
-██████╔╝███████║   ██║   ███████║ ██║ ██║     ██║     █████╗      ██╔██╗ ██║███████║██║   ██║███████║██║     
-██╔══██╗██╔══██║   ██║   ██╔══██║ ██║ ██║     ██║     ██╔══╝      ██║╚██╗██║██╔══██║╚██╗ ██╔╝██╔══██║██║     
-██████╔╝██║  ██║   ██║   ██║  ██║ ██║ ███████╗███████╗███████╗    ██║ ╚████║██║  ██║ ╚████╔╝ ██║  ██║███████╗
-╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═╝ ╚══════╝╚══════╝╚══════╝    ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝╚══════╝ 
-                                                                        
+██████╗  █████╗ ████████╗ █████╗ ██╗██╗     ██╗     ███████╗    ███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗     ███████╗
+██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██║██║     ██║     ██╔════╝    ████╗  ██║██╔══██╗██║   ██║██╔══██╗██║     ██╔════╝
+██████╔╝███████║   ██║   ███████║██║██║     ██║     █████╗      ██╔██╗ ██║███████║██║   ██║███████║██║     █████╗  
+██╔══██╗██╔══██║   ██║   ██╔══██║██║██║     ██║     ██╔══╝      ██║╚██╗██║██╔══██║╚██╗ ██╔╝██╔══██║██║     ██╔══╝  
+██████╔╝██║  ██║   ██║   ██║  ██║██║███████╗███████╗███████╗    ██║ ╚████║██║  ██║ ╚████╔╝ ██║  ██║███████╗███████╗
+╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝    ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝╚══════╝╚══════╝
+                                                                                                                   
+                                                                                                                   
+                         
         ╔═══════════════════════════════════════════════════════╗ 
         ║ [Niveau 1]           [Niveau 2]          [HIGH SCORE] ║
         ╚═══════════════════════════════════════════════════════╝   
@@ -48,12 +52,11 @@ def main():
         print('\nWORK IN PROGRESS\n ')
         exit()
     if reponse ==  'HIGH SCORE' :
-        with open ('score.txt', 'r') as f:
-            for ligne in f:
-                print(ligne)
+        pass
+                
     else:
         print('tu dois choisir entre 1 ou 2 ou HIGH SCORE ')
         main()
         
-main() # <--------------- on execute le code ici
+main() # <--------------- On exécute le code ici.
 
