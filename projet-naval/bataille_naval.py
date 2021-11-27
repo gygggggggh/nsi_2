@@ -1,4 +1,6 @@
-# NSI 1ère - Projet Bataille navale - Octobre 2020
+# NSI 1ère - Projet Bataille navale - Octobre 2021
+
+# Par Schertzer Dylan, Guilleux-Riff Liam et Gobert Mathys.
 
 '''                                        |_
                                        ---/ |
@@ -9,7 +11,6 @@
     _________________,|- -|,/---------------------\.____,|- -|,______________
     \                       \. . . . . . . . . . . ./                       /     , 
  ,   \   o           o           o           o           o           o     /    ,   )',    ,     ,(
-
 =)'===\___________________________________________________________________/==="('=='""=='"(=='-'  ',
 
                                 Bataille  navale 
@@ -46,6 +47,10 @@ def main():
         
          ▶ ''')
             
+    
+    
+    # Selon la réponse du joueur, le programme lancera le niveau correspondant.
+    
     if reponse ==  '1' :
         niveau1()
     if reponse ==  '2' :          

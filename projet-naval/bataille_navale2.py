@@ -1,5 +1,7 @@
 
-# NSI 1ère - Projet Bataille navale - Octobre 2020
+# NSI 1ère - Projet Bataille navale - Octobre 2021
+
+# Par Schertzer Dylan, Guilleux-Riff Liam et Gobert Mathys.
 
 
 # Importation des modules nécessaires au bon fonctionnement du programme.

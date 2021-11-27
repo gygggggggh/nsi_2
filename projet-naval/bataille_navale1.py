@@ -1,6 +1,6 @@
-# NSI 1ere - Projet Bataille navale - octobre 2020
+# NSI 1ère - Projet Bataille navale - Octobre 2021
 
-
+# Par Schertzer Dylan, Guilleux-Riff Liam et Gobert Mathys.
 
 
 '''                                        |_
@@ -25,6 +25,7 @@
 from os import  write
 from random import randint
 from datetime import datetime
+
 '''NIVEAU 1'''
 
 
@@ -70,15 +71,16 @@ def tirer():
 def result(bat, t):
 
     # On compare la fonction tir à la fonction du bateau mystère pour savoir si les coordonnées concordent.
-    # Si une des conditions est remplie, comme la concordination exacte des coordonnées le programme
-    # imprimera dans le terminal le résultat approprié à la situation.
+    # Si une des conditions est remplie, comme par exemple la concordination exacte des coordonnées de tir 
+    # et des coordonnées du bateau mystère, le programme imprimera dans le terminal le résultat 
+    # approprié à la situation.
 
     if bat[0] == t[0] and bat[1] != t[1] :
         print("\nEn vue sur la colone !\n")
-        coup += 1
+        
     if bat[1] != t[1] and bat[0] == t[0] :
         print("\nEn vue sur la ligne !\n ")
-        coup += 1
+        
     if bat[0] == t[0] and bat[1] == t[1] :
         print('\nCoulé !\n')
         fichier()
@@ -102,9 +104,10 @@ def niveau1() :
         result(bat, t)
         
         
-# Création de la fonction qui enregistre le nom des utilisateurs et la date à laquelle ils ont joué.
-
 def fichier():
+    # Création de la fonction qui demande et enregistre le nom des utilisateurs leur score, et 
+    # la date à laquelle ils ont joué.
+
     lenth_nom  = 0
     nombre_unite = 1   
     nom = str(input('Choisis un nom : '))  
