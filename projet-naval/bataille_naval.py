@@ -55,7 +55,7 @@ def main():
         pass
                 
     else:
-        print('tu dois choisir entre 1 ou 2 ou HIGH SCORE ')
+        print('Tu dois choisir entre 1, 2 ou HIGH SCORE ')
         main()
         
 main() # <--------------- On exécute le code ici.
