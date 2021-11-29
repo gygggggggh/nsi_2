@@ -71,23 +71,26 @@ def tirer():
 def result(bat, t):
 
     # On compare la fonction tir à la fonction du bateau mystère pour savoir si les coordonnées concordent.
-    # Si une des conditions est remplie, comme par exemple la concordination exacte des coordonnées de tir 
-    # et des coordonnées du bateau mystère, le programme imprimera dans le terminal le résultat 
-    # approprié à la situation.
-
+    coup = 0 
     if bat[0] == t[0] and bat[1] != t[1] :
         print("\nEn vue sur la colone !\n")
-        
+        coup += 1
     if bat[1] != t[1] and bat[0] == t[0] :
         print("\nEn vue sur la ligne !\n ")
-        
+        coup += 1
     if bat[0] == t[0] and bat[1] == t[1] :
+        coup += 1
         print('\nCoulé !\n')
-        fichier()
+        nom = str(input('Choisis un nom : ')) 
+        date= datetime.now()    
+        date_2 = date.strftime("%Y-%m-%d %H:%M:%S ")
+        with open("score.txt","a",) as obj :
+            obj.write(f'\n{date_2}{nom} {coup}\n ') 
         exit()
         
     else:
         print("\nÀ l’eau\n")
+        coup += 1
         
     
         
@@ -106,21 +109,6 @@ def niveau1() :
         
 def fichier():
     # Création de la fonction qui demande et enregistre le nom des utilisateurs leur score, et 
-    # la date à laquelle ils ont joué.
-
-    lenth_nom  = 0
-    nombre_unite = 1   
-    nom = str(input('Choisis un nom : '))  
-    if nom == '':
-        nom = 'invité'    
-    for chr in nom:
-       lenth_nom  += 1
-    if lenth_nom > 9 :
-        nombre_unite += 1    
-    if lenth_nom > 99:
-        print("ce nom est trop grand")
-    date= datetime.now()    
-    date_2 = date.strftime("%Y-%m-%d %H:%M:%S ")
-    with open("score.txt","a",) as obj :
-        obj.write(f'\n{nombre_unite} {lenth_nom} {nom} {date_2}') 
-    return nombre_unite , lenth_nom 
+    # la date à laquelle ils ont joué.   
+     
+   pass
