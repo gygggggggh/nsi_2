@@ -11,7 +11,7 @@ from random import randint
 
 '''NIVEAU 2'''
 
-# La définition de la liste_p ne sert à rien, cette fonction n'est qu'une liste des multiple possibilités
+# --> La définition de la liste_p ne sert à rien, cette fonction n'est qu'une liste des multiple possibilités
 # de coordonnées du bateau mystère.
 
 # liste_p =[[[1,1][1,2][1,3]][[1,1][2,1][3,1]][[1,2][1,3][1,4]][[1,2][2,2][3,2]][[1,3][1,4][1,5]][[1,3][2,3][3,3]][[1,4][1,3][1,2]][[1,4][2,4][3,4]][[1,5][2,5][3,5]][[1,5][1,4][1,3]][[2,1][2,2][2,3]][[2,1][3,1][4,1]][[2,2][2,3][2,4]][[2,2][3,2][4,2]][[2,3][2,4][2,5]][[2,3][3,3][4,3]][[2,3][2,2][2,1]][[2,4][3,4][4,4]][[2,4][2,3][2,2]][[2,5][3,5][4,5]][[2,5][2,4][2,3]][[3,1][3,2][3,3]][[3,1][4,1][4,2]][[3,2][3,3][3,4]][[3,2][4,2][5,2]][[3,2][2,2][1,2]][[3,3][3,4][3,5]][[3,3][4,3][5,3]][[3,3][3,2][3,1]][[3,3][2,3][1,3]][[3,4][4,4][5,4]][[3,4][3,3][3,2]][[3,4][2,4][1,4]][[3,5][4,5][5,5]][[3,5][3,4][3,3]][[3,5][2,5][1,5]][[4,1][3,1][2,1]][[4,2][4,3][4,4]][[4,2][3,2][2,2]][[4,3][4,2][4,1]][[4,3][3,3][2,3]][[4,3][4,4][4,5]][[4,4][4,3][4,2]][[4,4][3,4][2,4]][[4,5,][4,4][4,3]][[4,5][3,5][2,5]][[5,1][5,2][5,3]][[5,2][5,3][5,4]][[5,3][5,2][5,1]][[5,3][4,3][3,3]][[5,4][5,3][5,2]][[5,4][5,3][5,2]][[5,5][5,4][5,3]][[5,5][4,3][3,3]]]
@@ -25,6 +25,7 @@ for x in range(5):
     plat.append(["-"] * 5) 
 
 def print_plat(plat):
+    '''affiche le tableaux'''
     print('  1 2 3 4 5' )
     for col in range(len(plat)): 
         print(str(col+1) + " " + " ".join(plat[col])) 
@@ -33,9 +34,8 @@ def print_plat(plat):
 
 def tirer():
     
-    # On crée la fonction de tir grâce à l'utilisateur (fonction input).
-    # Puis le programme vérifie si le joueur respecte les règles : si oui, le programme continue, 
-    # si non, le programme se relance.
+    """ permet au joueur de tirer sur une position x et y puis vérifie si le joueur respecte les règles : si oui, le programme continue avec les valeurs rentrées, 
+     si non, le programme se relance."""
     
     while True:
         try:
@@ -65,6 +65,7 @@ def tirer():
 # --> Cette partie du programme ne fonctionne pas, on donc mise en commentaire.
 
 # def gen_bateau(liste_p):
+    '''choisi parmis une des 58 possibiliter du positionnement du bateau'''
     # n = randint(0,57)
     # print(liste_p)
 

@@ -41,11 +41,11 @@ def main():
                                                                                                                    
                                                                                                                    
                          
-        ╔═══════════════════════════════════════════════════════╗ 
-        ║ [Niveau 1]           [Niveau 2]          [HIGH SCORE] ║
-        ╚═══════════════════════════════════════════════════════╝   
+        ╔═════════════════════════════════════════╗ 
+        ║ [1]           [2]          [HIGH_SCORE] ║
+        ╚═════════════════════════════════════════╝   
         
-         ▶ ''')
+         ▶ ''').capitalize()
             
     
     
@@ -56,9 +56,10 @@ def main():
     if reponse ==  '2' :          
         print('\nWORK IN PROGRESS\n ')
         exit()
-    if reponse ==  'HIGH SCORE' :
-        pass
-                
+    if reponse ==  'HIGH_SCORE' or '3' :
+        with open('score.txt','r') as f :
+            ligne = f.readline()
+            print('\n'+ligne)
     else:
         print('Tu dois choisir entre 1, 2 ou HIGH SCORE ')
         main()
