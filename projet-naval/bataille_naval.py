@@ -56,7 +56,7 @@ def main():
     if reponse ==  '2' :          
         print('\nWORK IN PROGRESS\n ')
         exit()
-    if reponse ==  'HIGH_SCORE' :
+    if reponse ==  'HIGH_SCORE'  :
         with open('score.txt','r') as f :
             ligne = f.readline()
             print('\n'+ligne)

@@ -113,4 +113,4 @@ def fichier():
     date= datetime.now()    
     date_2 = date.strftime("%Y-%m-%d %H:%M:%S ")
     with open("score.txt","a",) as obj :
-        obj.write(f'\nLe  score de {nom} a {date_2} est de {ERROR404} coup \n ') 
+       obj.write(f'\nLe  score de {nom} a {date_2} est de {ERROR404} coup \n ') 
