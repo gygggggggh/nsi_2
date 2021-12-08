@@ -23,7 +23,7 @@
 # Importation des modules nécessaires au bon fonctionnement du programme.
 
 from os import  write
-from random import randint
+from random import expovariate, randint
 from datetime import datetime
 from time import *
 
@@ -47,47 +47,49 @@ def tirer():
     ''' crée la fonction de tir grâce à la fonction input
       puis le programme vérifie si le joueur respecte les règles : si oui, le programme continue, 
       si non, le programme se relance.'''
-    
-    while True:
-        try:
-            x = int(input('Choisi une colonne de 1 a 10 : '))
-            y = int(input('Choisi une ligne de 1 a 10 : '))
-        except ValueError:
-                print("\nVous devez entrer un nombre\n")
+    try:
+        x = int(input('Choisi une colonne de 1 a 10 : '))
+        y = int(input('Choisi une ligne de 1 a 10 : '))
+    except ValueError:
+            print("\nVous devez entrer un nombre\n")
+    else:
+        if x  < 1 :
+            print("\n un nombre  est trop petit\n")
+            tirer()
+        if y  < 1 :
+            print("\n un  nombre est trop petit\n")  
+            tirer() 
+        if x  > 10 : 
+            print("\n un nombre  est trop grand\n")
+            tirer()
+        if y  > 10 : 
+            print("\n un nombre  est trop grand\n")  
+            tirer() 
         else:
-            if x  < 1 :
-                print("\n un nombre  est trop petit\n")
-                tirer()
-            if y  < 1 :
-                print("\n un  nombre est trop petit\n")  
-                tirer() 
-            if x  > 10 : 
-                print("\n un nombre  est trop grand\n")
-                tirer()
-            if y  > 10 : 
-                print("\n un nombre  est trop grand\n")  
-                tirer() 
-            else:
-                return  x,y 
+            return  x,y 
  
-def result(bat, t,):
+def result(bat, t):
 
     """ compare la fonction tir à la fonction du bateau mystère pour savoir si les coordonnées 
     concordent et dit si le bateau est coule ou pas."""
-    if bat[0] == t[0] :
-        print("\nEn vue sur la colone !\n")
+    try :
+        if bat[0] == t[0] and bat[1] != t[1]:
+            print("\nEn vue sur la ligne ?\n")
 
-    if bat[0] == t[0] :
-        print("\nEn vue sur la ligne !\n ")
+        if bat[0] != t[0] and  bat[1] == t[1] :
+            print("\nEn vue sur la colonne? \n ")
 
-    if bat[0] == t[0] and bat[1] == t[1] :
-        print('\nCoulé !\n')
-        fichier()
-        exit()
-        
-    else:
-        print("\nÀ l’eau\n")
-        
+        if bat[0] == t[0] and bat[1] == t[1] :
+            print('\nCoulé !\n')
+            fichier()
+            exit()
+            
+        if bat[0] != t[0] and bat[1] != t[1] :
+            print("\nÀ l’eau\n")
+    except TypeError :
+                      print("il faut entrée un nombre \n")
+                      
+                      
         
  
  
@@ -95,7 +97,6 @@ def niveau1() :
     """crée une boucle pour utiliser ce code en jusqu'a que l'utilisateur ait trouvé le bateaux"""
     bat = generer_bat()
     while True:
-        print(bat)
         t = tirer()
         result(bat, t,)
         
@@ -109,8 +110,8 @@ def fichier():
     nom = str(input('Choisis un nom : ')) 
     if nom == '':
        nom = 'inviter'
-    ERROR404 = randint(1,999)
+    ERROR404 = randint(2,999)
     date= datetime.now()    
     date_2 = date.strftime("%Y-%m-%d %H:%M:%S ")
     with open("score.txt","a",) as obj :
-       obj.write(f'\nLe  score de {nom} a {date_2} est de {ERROR404} coup \n ') 
+       obj.write(f'\nLe  score de {nom} a {date_2} est de {ERROR404} coups \n ') 
