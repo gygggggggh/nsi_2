@@ -9,11 +9,11 @@
             dernier = mot'''
         
 
-'''with open('tables.txt','w') as f:
-    for i in range(2,31):
+with open('tables.txt','w') as f:
+    for i in range(2,1001):
         f.write(f'table de {str(i)} \n')
-        for j in range(1,21):
-            f.write(str(i)+'*'+str(j)+'='+str(i*j)+'\n')'''
+        for j in range(1,101):
+            f.write(str(i)+'*'+str(j)+'='+str(i*j)+'\n')
 #11
 '''with open ('journal.txt','a',) as f:
     chaine = "nimporte quoi"
@@ -22,7 +22,7 @@
         f.write(f'{chaine} \n')'''
 
 #12
-
+'''
 def isFile(filename):
     try:
         with open (filename,'r') as f:
@@ -40,12 +40,12 @@ def show_file(filename):
                 print(ligne.strip())
     else:
         print('ce fichier est pas dans cette realité')
+'''
 
 
-
-def copy_file(filename,copy_file):
+'''def copy_file(filename,copy_file):
     if isFile(filename):
         with open(filename,'r') as original , open(copy_file,'w') as copy_file:
             for ligne in original :
                 copy_file.write(ligne)
-copy_file('/home/dylans/Bureau/porge.txt','porche.txt')
+copy_file('/home/dylans/Bureau/porge.txt','porche.txt')'''
