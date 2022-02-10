@@ -1,0 +1,9 @@
+
+le serpent 
+    le deplacmenet du serpent
+    agrandissemnt du serpent
+
+
+
+la pomme    
+    random pomme (avec double randint )
