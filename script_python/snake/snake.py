@@ -5,8 +5,7 @@ f = Tk()
 f.title('snake')
 f.iconphoto(True, PhotoImage(file='script_python/snake/snake.png'))
 
-# variable pour stocker le score 
-score = 0
+# variable pour stocker le tag du score 
 
 # taille de la fenêtre
 hauteur_f = 500
@@ -30,7 +29,7 @@ cor_x = int((largeur_ecran/2) - (largeur_f/2))
 cor_y = int((hauteur_ecran/2) - (hauteur_f/2))
 
 f.geometry("{}x{}+{}+{}".format(largeur_f, hauteur_f, cor_x, cor_y))
-f.resizable(1,1)
+f.resizable(0,0)
 
 
 
@@ -39,11 +38,11 @@ grille.pack(side="bottom")
 
 score = Canvas(f, width =500, height = 60, bg = "#369BE3", relief = 'raised',  bd = '6')
 score.pack(side="top")
-score.create_text(250,20, text = "score: " + str(SCORE) , font = ('Times', '24', 'bold '))
+texte =  score.create_text(250,20, text = "score: " + str(SCORE) , font = ('Times', '20', 'bold '))
 score.pack(side="top")
 
 
-nombre_grille = 15
+nombre_grille = 16
 
 Largeur_Case = (500 / nombre_grille)
 Hauteur_Case = (450 / nombre_grille)
@@ -86,6 +85,8 @@ def fruit_aleatoire():
         random_fruit = case_aleatoire
 
     return random_fruit
+
+pomme = '/home/dylans/Bureau/nsi_2/script_python/snake/snake.png'
 
 def dessine_fruit():
     global FRUIT
@@ -130,13 +131,14 @@ def serpent_mort(NouvelleTete):
     if (etre_dans_snake(NouvelleTete) and MOUVEMENT != (0, 0)) or NouvelleTeteX < 0 or NouvelleTeteY < 0 or NouvelleTeteX >= nombre_grille or NouvelleTeteY >= nombre_grille:
         PERDU = 1
 
-def score_update():
+def score_update(texte):
     
     global SCORE
 
     SCORE = SCORE + 1
-    score.delete(0.0, 3.0)
-    score.create_text( "score: " + str(SCORE) + "\n")
+    score.delete(texte)
+    texte = score.create_text(250,20, text = "score:j " + str(SCORE) , font = ('Times', '20', 'bold '))
+    score.pack(side="top")
     
 def mise_a_jour_snake():
     
@@ -169,24 +171,20 @@ def boucle():
     draw_snake(SNAKE)
 
     if PERDU:
-      pass 
-        # score.delete(0.0, 3.0)
+           
+        score.delete(0.0, 3.0)
 
-        # score.text(END, "score finale : ")
+        score.create_text(250,20,"score: " + str(SCORE) + "\n")
     else:
         
-        f.after(70, boucle)   
-
-
-
-SNAKE = [case_aleatoire()]
-FRUIT = fruit_aleatoire()
-MOUVEMENT = (0, 0)
+        f.after(60, boucle)   
 
 SCORE = 0
 
 PERDU = 0
 
+SNAKE = [case_aleatoire()]
+FRUIT = fruit_aleatoire()
 
 f.after(0, boucle()) 
 
