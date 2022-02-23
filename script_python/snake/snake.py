@@ -55,7 +55,7 @@ def remplir_case (x, y):
     Origine_snake_X2 = Origine_snake_X1 + Largeur_Case
     Origine_snake_Y2 = Origine_snake_Y1 + Hauteur_Case
     
-    grille.create_rectangle(Origine_snake_X1, Origine_snake_Y1, Origine_snake_X2, Origine_snake_Y2, fill="green")
+    grille.create_rectangle(Origine_snake_X1, Origine_snake_Y1, Origine_snake_X2, Origine_snake_Y2, fill="green" )
 
 def case_aleatoire():
     
@@ -96,7 +96,7 @@ def dessine_fruit():
     OrigineCaseX2 = OrigineCaseX1 + Largeur_Case
     OrigineCaseY2 = OrigineCaseY1 + Hauteur_Case
     
-    grille.create_oval(OrigineCaseX1, OrigineCaseY1, OrigineCaseX2, OrigineCaseY2, fill = "red")
+    grille.create_oval(OrigineCaseX1, OrigineCaseY1, OrigineCaseX2, OrigineCaseY2, fill = "red",outline='orange')
 
 def q(event):
     global MOUVEMENT
@@ -152,7 +152,7 @@ def mise_a_jour_snake():
        
         FRUIT = fruit_aleatoire()
         
-        score_update()
+        #score_update()
     else:
         SNAKE.pop()   
  
@@ -169,10 +169,10 @@ def boucle():
     draw_snake(SNAKE)
 
     if PERDU:
-       
-        score.delete(0.0, 3.0)
+      pass 
+        # score.delete(0.0, 3.0)
 
-        score.text(END, "score finale : ")
+        # score.text(END, "score finale : ")
     else:
         
         f.after(70, boucle)   
@@ -188,6 +188,9 @@ SCORE = 0
 PERDU = 0
 
 
-f.after(0, boucle())   
+f.after(0, boucle()) 
+
+  
 f.mainloop()
+
 
