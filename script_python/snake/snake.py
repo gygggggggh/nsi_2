@@ -38,7 +38,7 @@ grille.pack(side="bottom")
 
 score = Canvas(f, width =500, height = 60, bg = "#369BE3", relief = 'raised',  bd = '6')
 score.pack(side="top")
-texte =  score.create_text(100,20, text = "score:j " + str(SCORE) , font = ('Times', '20', 'bold '))
+texte =  score.create_text(110,20, text = "score: " + str(SCORE) , font = ('Times', '20', 'bold '))
 score.itemcget(texte, 'text')
 score.pack(side="top")
 
@@ -67,7 +67,7 @@ def case_aleatoire():
 
 def draw_snake(snake):
     for case in snake:
-        x, y = case
+        (x, y) = case
         remplir_case(x, y)
 
 
@@ -91,7 +91,7 @@ pomme = '/home/dylans/Bureau/nsi_2/script_python/snake/snake.png'
 
 def dessine_fruit():
     global FRUIT
-    x, y = FRUIT
+    [x, y] = FRUIT
     
     OrigineCaseX1 = x * Largeur_Case
     OrigineCaseY1 = y * Hauteur_Case
@@ -100,30 +100,30 @@ def dessine_fruit():
     
     grille.create_oval(OrigineCaseX1, OrigineCaseY1, OrigineCaseX2, OrigineCaseY2, fill = "red",outline='orange')
 
-def q(event):
+def gauche(event):
     global MOUVEMENT
     MOUVEMENT = (-1, 0)
-    
-f.bind("<q>", q)
 
-def d(event):
+def droite(event):
     global MOUVEMENT
     MOUVEMENT = (1, 0)
-    
-f.bind("<d>",d)
 
-def z(event):
+def haut(event):
     global MOUVEMENT
     MOUVEMENT = (0, -1)
-    
-f.bind("<z>",z)
 
-def s(event):
+def bas(event):
     global MOUVEMENT
-    MOUVEMENT = (0, 1)
-    
-f.bind("<s>",s)    
+    MOUVEMENT = (0, 1) 
 
+f.bind("<Left>", gauche)
+f.bind("<Right>", droite)
+f.bind("<Up>", haut)
+f.bind("<Down>", bas)
+f.bind("<q>", gauche)
+f.bind("<d>", droite)
+f.bind("<z>", haut)
+f.bind("<s>", bas)
 def serpent_mort(NouvelleTete):
     global PERDU
     
@@ -171,13 +171,10 @@ def boucle():
     draw_snake(SNAKE)
 
     if PERDU:
-           
-        sZ
-
         score.itemconfigure(texte,text = "score finale : " + str(SCORE) , font = ('Times', '20', 'bold '))
     else:
         
-        f.after(60, boucle)   
+        f.after(75, boucle)   
 
 SCORE = 0
 
