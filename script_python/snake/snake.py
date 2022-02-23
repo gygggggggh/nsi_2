@@ -154,7 +154,7 @@ def mise_a_jour_snake():
        
         FRUIT = fruit_aleatoire()
         
-        score_update(pig)
+        score_update()
     else:
         SNAKE.pop()   
  
@@ -171,7 +171,7 @@ def boucle():
     draw_snake(SNAKE)
 
     if PERDU:
-       
+           
         score.delete(0.0, 3.0)
 
         score.create_text(250,20,"score: " + str(SCORE) + "\n")
@@ -179,7 +179,9 @@ def boucle():
         
         f.after(60, boucle)   
 
+SCORE = 0
 
+PERDU = 0
 
 SNAKE = [case_aleatoire()]
 FRUIT = fruit_aleatoire()
