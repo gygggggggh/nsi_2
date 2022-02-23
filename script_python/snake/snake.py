@@ -38,7 +38,8 @@ grille.pack(side="bottom")
 
 score = Canvas(f, width =500, height = 60, bg = "#369BE3", relief = 'raised',  bd = '6')
 score.pack(side="top")
-texte =  score.create_text(250,20, text = "score: " + str(SCORE) , font = ('Times', '20', 'bold '))
+texte =  score.create_text(100,20, text = "score:j " + str(SCORE) , font = ('Times', '20', 'bold '))
+score.itemcget(texte, 'text')
 score.pack(side="top")
 
 
@@ -131,13 +132,12 @@ def serpent_mort(NouvelleTete):
     if (etre_dans_snake(NouvelleTete) and MOUVEMENT != (0, 0)) or NouvelleTeteX < 0 or NouvelleTeteY < 0 or NouvelleTeteX >= nombre_grille or NouvelleTeteY >= nombre_grille:
         PERDU = 1
 
-def score_update(texte):
+def score_update():
     
     global SCORE
 
-    SCORE = SCORE + 1
-    score.delete(texte)
-    texte = score.create_text(250,20, text = "score:j " + str(SCORE) , font = ('Times', '20', 'bold '))
+    SCORE += 100
+    score.itemconfigure(texte,text = "score: " + str(SCORE) , font = ('Times', '20', 'bold '))
     score.pack(side="top")
     
 def mise_a_jour_snake():
@@ -154,7 +154,7 @@ def mise_a_jour_snake():
        
         FRUIT = fruit_aleatoire()
         
-        #score_update()
+        score_update()
     else:
         SNAKE.pop()   
  
@@ -172,9 +172,9 @@ def boucle():
 
     if PERDU:
            
-        score.delete(0.0, 3.0)
+        sZ
 
-        score.create_text(250,20,"score: " + str(SCORE) + "\n")
+        score.itemconfigure(texte,text = "score finale : " + str(SCORE) , font = ('Times', '20', 'bold '))
     else:
         
         f.after(60, boucle)   
