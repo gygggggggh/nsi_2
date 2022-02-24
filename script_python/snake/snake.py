@@ -3,7 +3,7 @@ from random import randint
 
 f = Tk()
 f.title('snake')
-f.iconphoto(True, PhotoImage(file='script_python/snake/snake.png'))
+f.iconphoto(True, PhotoImage(file='script_python\snake\snake.png'))
 
 # variable pour stocker le tag du score 
 
@@ -22,7 +22,9 @@ SCORE = 0
 
 PERDU = 0
 
-
+with open('score.txt','r') as obj :
+         HIGHSCORE = obj.readline()
+        
 
 
 cor_x = int((largeur_ecran/2) - (largeur_f/2))
@@ -38,8 +40,11 @@ grille.pack(side="bottom")
 
 score = Canvas(f, width =500, height = 60, bg = "#369BE3", relief = 'raised',  bd = '6')
 score.pack(side="top")
-texte =  score.create_text(110,20, text = "score: " + str(SCORE) , font = ('Times', '20', 'bold '))
+texte =  score.create_text(80,20, text = "score: " + str(SCORE) , font = ('Times', '15', 'bold '))
 score.itemcget(texte, 'text')
+score.pack(side="top")
+
+score.create_text(320,20, text = "high score: " + str(HIGHSCORE) , font = ('Times', '15', 'bold ') , anchor= 'w')
 score.pack(side="top")
 
 
@@ -61,7 +66,7 @@ def case_aleatoire():
     
     Aleatoire_X = randint(0, nombre_grille - 1)
     Aleatoire_Y = randint(0, nombre_grille - 1)
-
+    print(Aleatoire_X ,Aleatoire_Y)
     return (Aleatoire_X, Aleatoire_Y)
 
 
@@ -91,7 +96,7 @@ pomme = '/home/dylans/Bureau/nsi_2/script_python/snake/snake.png'
 
 def dessine_fruit():
     global FRUIT
-    [x, y] = FRUIT
+    x, y = FRUIT
     
     OrigineCaseX1 = x * Largeur_Case
     OrigineCaseY1 = y * Hauteur_Case
@@ -124,7 +129,9 @@ f.bind("<q>", gauche)
 f.bind("<d>", droite)
 f.bind("<z>", haut)
 f.bind("<s>", bas)
+
 def serpent_mort(NouvelleTete):
+    pass
     global PERDU
     
     NouvelleTeteX, NouvelleTeteY = NouvelleTete
@@ -137,7 +144,7 @@ def score_update():
     global SCORE
 
     SCORE += 100
-    score.itemconfigure(texte,text = "score: " + str(SCORE) , font = ('Times', '20', 'bold '))
+    score.itemconfigure(texte,text = "score: " + str(SCORE) , font = ('Times', '15', 'bold '))
     score.pack(side="top")
     
 def mise_a_jour_snake():
@@ -161,6 +168,8 @@ def mise_a_jour_snake():
  
 def boucle():
     
+    global HIGHSCORE , SCORE
+    
     f.update
     f.update_idletasks()
     mise_a_jour_snake()
@@ -171,7 +180,14 @@ def boucle():
     draw_snake(SNAKE)
 
     if PERDU:
-        score.itemconfigure(texte,text = "score finale : " + str(SCORE) , font = ('Times', '20', 'bold '))
+        score.itemconfigure(texte,text = "score : " + str(SCORE) , font = ('Times', '15', 'bold '))
+        if SCORE > int(HIGHSCORE) :
+            HIGHSCORE = SCORE
+            with open("score.txt","w",) as obj :
+                obj.write(str(HIGHSCORE))
+        else:
+             print
+        
     else:
         
         f.after(75, boucle)   
