@@ -2,8 +2,8 @@ from tkinter import *
 import pygame
 from random import randint
 pygame.init()
-pygame.mixer.music.load("musique.wav")
-pygame.mixer.music.play(loops=999)
+# pygame.mixer.music.load("musique.wav")
+# pygame.mixer.music.play(loops=999)
 
 turn = pygame.mixer.Sound("_turn_.ogg")
 
@@ -125,7 +125,7 @@ def dessine_fruit():
     
 def gauche(event):
     global MOUVEMENT
-    if  MOUVEMENT == (1, 0):
+    if  MOUVEMENT == (1, 0) or MOUVEMENT == (-1, 0) :
         pass
     else:
         MOUVEMENT = (-1, 0)
@@ -133,7 +133,7 @@ def gauche(event):
         empty_channel3.play(turn)
 def droite(event):
     global MOUVEMENT
-    if  MOUVEMENT == (-1, 0):
+    if  MOUVEMENT == (-1, 0) or MOUVEMENT == (1, 0):
         pass
     else:
         MOUVEMENT = (1, 0)
@@ -141,7 +141,7 @@ def droite(event):
         empty_channel3.play(turn)
 def haut(event):
     global MOUVEMENT
-    if  MOUVEMENT == (0, 1):
+    if  MOUVEMENT == (0, 1) or MOUVEMENT == (0, -1):
         pass
     else:
         MOUVEMENT = (0, -1)
@@ -149,7 +149,7 @@ def haut(event):
         empty_channel3.play(turn)
 def bas(event):
     global MOUVEMENT
-    if  MOUVEMENT == (0, -1):
+    if  MOUVEMENT == (0, -1) or MOUVEMENT == (0, 1):
         pass
     else:
         MOUVEMENT = (0, 1)
