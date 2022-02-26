@@ -67,7 +67,6 @@ def case_aleatoire():
     
     Aleatoire_X = randint(0, nombre_grille - 1)
     Aleatoire_Y = randint(0, nombre_grille - 1)
-    print(Aleatoire_X ,Aleatoire_Y)
     return Aleatoire_X, Aleatoire_Y
 
 
@@ -94,8 +93,6 @@ def fruit_aleatoire():
 
     return (random_fruit)
 
-pomme = '/home/dylans/Bureau/nsi_2/script_python/snake/snake.png'
-
 def dessine_fruit():
     global FRUIT
     try:
@@ -109,7 +106,7 @@ def dessine_fruit():
             try:
                 x, y = FRUIT
             except TypeError:
-                FRUIT = fruit_aleatoire()
+                f.quit()
         
          
     OrigineCaseX1 = x * Largeur_Case
@@ -225,7 +222,6 @@ PERDU = 0
 
 SNAKE = [case_aleatoire()]
 FRUIT = fruit_aleatoire()
-print(FRUIT)
 f.after(0, boucle()) 
 
   
