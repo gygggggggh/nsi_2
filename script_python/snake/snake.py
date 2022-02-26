@@ -1,5 +1,6 @@
 from tkinter import *
 from random import randint 
+from playsound import playsound
 
 f = Tk()
 f.title('snake')
@@ -67,7 +68,7 @@ def case_aleatoire():
     Aleatoire_X = randint(0, nombre_grille - 1)
     Aleatoire_Y = randint(0, nombre_grille - 1)
     print(Aleatoire_X ,Aleatoire_Y)
-    return (Aleatoire_X, Aleatoire_Y)
+    return Aleatoire_X, Aleatoire_Y
 
 
 def draw_snake(snake):
@@ -85,19 +86,32 @@ def etre_dans_snake(case):
     return EtreDedans
 
 def fruit_aleatoire():
-
+    
     random_fruit = case_aleatoire()
+    
     while (etre_dans_snake(random_fruit)):
         random_fruit = case_aleatoire
 
-    return random_fruit
+    return (random_fruit)
 
 pomme = '/home/dylans/Bureau/nsi_2/script_python/snake/snake.png'
 
 def dessine_fruit():
     global FRUIT
-    x, y = FRUIT
-    
+    try:
+        x, y = FRUIT
+    except TypeError:
+        FRUIT = fruit_aleatoire()
+        try:
+            x, y = FRUIT
+        except TypeError:
+            FRUIT = fruit_aleatoire()
+            try:
+                x, y = FRUIT
+            except TypeError:
+                FRUIT = fruit_aleatoire()
+        
+         
     OrigineCaseX1 = x * Largeur_Case
     OrigineCaseY1 = y * Hauteur_Case
     OrigineCaseX2 = OrigineCaseX1 + Largeur_Case
@@ -105,22 +119,36 @@ def dessine_fruit():
     
     grille.create_oval(OrigineCaseX1, OrigineCaseY1, OrigineCaseX2, OrigineCaseY2, fill = "red",outline='orange')
 
+    return 0 
+    
 def gauche(event):
     global MOUVEMENT
-    MOUVEMENT = (-1, 0)
-
+    if  MOUVEMENT == (1, 0):
+        pass
+    else:
+        MOUVEMENT = (-1, 0)
+        
 def droite(event):
     global MOUVEMENT
-    MOUVEMENT = (1, 0)
-
+    if  MOUVEMENT == (-1, 0):
+        pass
+    else:
+        MOUVEMENT = (1, 0)
+        
 def haut(event):
     global MOUVEMENT
-    MOUVEMENT = (0, -1)
-
+    if  MOUVEMENT == (0, 1):
+        pass
+    else:
+        MOUVEMENT = (0, -1)
+        
 def bas(event):
     global MOUVEMENT
-    MOUVEMENT = (0, 1) 
-
+    if  MOUVEMENT == (0, -1):
+        pass
+    else:
+        MOUVEMENT = (0, 1) 
+        
 f.bind("<Left>", gauche)
 f.bind("<Right>", droite)
 f.bind("<Up>", haut)
@@ -160,7 +188,6 @@ def mise_a_jour_snake():
     if NouvelleTete == FRUIT:
        
         FRUIT = fruit_aleatoire()
-        
         score_update()
     else:
         SNAKE.pop()   
@@ -190,7 +217,7 @@ def boucle():
         
     else:
         
-        f.after(75, boucle)   
+        f.after(100, boucle)   
 
 SCORE = 0
 
@@ -198,7 +225,7 @@ PERDU = 0
 
 SNAKE = [case_aleatoire()]
 FRUIT = fruit_aleatoire()
-
+print(FRUIT)
 f.after(0, boucle()) 
 
   
