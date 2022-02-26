@@ -1,10 +1,15 @@
 from tkinter import *
-from random import randint 
-from playsound import playsound
+import pygame
+from random import randint
+pygame.init()
+pygame.mixer.music.load("musique.wav")
+pygame.mixer.music.play(loops=999)
+
+turn = pygame.mixer.Sound("_turn_.ogg")
 
 f = Tk()
 f.title('snake')
-f.iconphoto(True, PhotoImage(file='script_python\snake\snake.png'))
+f.iconphoto(True, PhotoImage(file='snake.png'))
 
 # variable pour stocker le tag du score 
 
@@ -45,7 +50,7 @@ texte =  score.create_text(80,20, text = "score: " + str(SCORE) , font = ('Times
 score.itemcget(texte, 'text')
 score.pack(side="top")
 
-score.create_text(320,20, text = "high score: " + str(HIGHSCORE) , font = ('Times', '15', 'bold ') , anchor= 'w')
+score.create_text(320,20, text = "high score: " + HIGHSCORE , font = ('Times', '15', 'bold ') , anchor= 'w')
 score.pack(side="top")
 
 
@@ -115,8 +120,8 @@ def dessine_fruit():
     OrigineCaseY2 = OrigineCaseY1 + Hauteur_Case
     
     grille.create_oval(OrigineCaseX1, OrigineCaseY1, OrigineCaseX2, OrigineCaseY2, fill = "red",outline='orange')
-
-    return 0 
+    
+    
     
 def gauche(event):
     global MOUVEMENT
@@ -124,28 +129,32 @@ def gauche(event):
         pass
     else:
         MOUVEMENT = (-1, 0)
-        
+        empty_channel3 = pygame.mixer.find_channel()
+        empty_channel3.play(turn)
 def droite(event):
     global MOUVEMENT
     if  MOUVEMENT == (-1, 0):
         pass
     else:
         MOUVEMENT = (1, 0)
-        
+        empty_channel3 = pygame.mixer.find_channel()
+        empty_channel3.play(turn)
 def haut(event):
     global MOUVEMENT
     if  MOUVEMENT == (0, 1):
         pass
     else:
         MOUVEMENT = (0, -1)
-        
+        empty_channel3 = pygame.mixer.find_channel()
+        empty_channel3.play(turn)
 def bas(event):
     global MOUVEMENT
     if  MOUVEMENT == (0, -1):
         pass
     else:
-        MOUVEMENT = (0, 1) 
-        
+        MOUVEMENT = (0, 1)
+        empty_channel3 = pygame.mixer.find_channel()
+        empty_channel3.play(turn)
 f.bind("<Left>", gauche)
 f.bind("<Right>", droite)
 f.bind("<Up>", haut)
@@ -163,7 +172,10 @@ def serpent_mort(NouvelleTete):
     
     if (etre_dans_snake(NouvelleTete) and MOUVEMENT != (0, 0)) or NouvelleTeteX < 0 or NouvelleTeteY < 0 or NouvelleTeteX >= nombre_grille or NouvelleTeteY >= nombre_grille:
         PERDU = 1
-
+        pygame.mixer.music.stop()
+        game_over = pygame.mixer.Sound("mixkit-retro-game-over-1947.wav")
+        empty_channel2 = pygame.mixer.find_channel()
+        empty_channel2.play(game_over)
 def score_update():
     
     global SCORE
@@ -186,6 +198,9 @@ def mise_a_jour_snake():
        
         FRUIT = fruit_aleatoire()
         score_update()
+        eat = pygame.mixer.Sound("_eat_.wav")
+        empty_channel = pygame.mixer.find_channel()
+        empty_channel.play(eat)
     else:
         SNAKE.pop()   
  
@@ -209,9 +224,7 @@ def boucle():
             HIGHSCORE = SCORE
             with open("score.txt","w",) as obj :
                 obj.write(str(HIGHSCORE))
-        else:
-             print
-        
+
     else:
         
         f.after(100, boucle)   
