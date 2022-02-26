@@ -1,9 +1,11 @@
 from tkinter import *
 import pygame
 from random import randint
+from time import sleep
+
 pygame.init()
-# pygame.mixer.music.load("musique.wav")
-# pygame.mixer.music.play(loops=999)
+pygame.mixer.music.load("musique.wav")
+pygame.mixer.music.play(loops=-1)
 
 turn = pygame.mixer.Sound("_turn_.ogg")
 
@@ -11,7 +13,6 @@ f = Tk()
 f.title('snake')
 f.iconphoto(True, PhotoImage(file='snake.png'))
 
-# variable pour stocker le tag du score 
 
 # taille de la fenêtre
 hauteur_f = 500
@@ -31,7 +32,6 @@ PERDU = 0
 with open('score.txt','r') as obj :
          HIGHSCORE = obj.readline()
         
-
 
 cor_x = int((largeur_ecran/2) - (largeur_f/2))
 cor_y = int((hauteur_ecran/2) - (hauteur_f/2))
@@ -67,7 +67,7 @@ def remplir_case (x, y):
     Origine_snake_Y2 = Origine_snake_Y1 + Hauteur_Case
     
     grille.create_rectangle(Origine_snake_X1, Origine_snake_Y1, Origine_snake_X2, Origine_snake_Y2, fill="green" )
-
+   
 def case_aleatoire():
     
     Aleatoire_X = randint(0, nombre_grille - 1)
@@ -111,15 +111,15 @@ def dessine_fruit():
             try:
                 x, y = FRUIT
             except TypeError:
-                f.quit()
+                x, y = 0,0
         
-         
-    OrigineCaseX1 = x * Largeur_Case
-    OrigineCaseY1 = y * Hauteur_Case
-    OrigineCaseX2 = OrigineCaseX1 + Largeur_Case
-    OrigineCaseY2 = OrigineCaseY1 + Hauteur_Case
+        
+    Origine_snake_X1 = x * Largeur_Case
+    Origine_snake_Y1 = y * Hauteur_Case
+    Origine_snake_X2 = Origine_snake_X1 + Largeur_Case
+    Origine_snake_Y2 = Origine_snake_Y1 + Hauteur_Case
     
-    grille.create_oval(OrigineCaseX1, OrigineCaseY1, OrigineCaseX2, OrigineCaseY2, fill = "red",outline='orange')
+    grille.create_oval( Origine_snake_X1, Origine_snake_Y1,  Origine_snake_X2, Origine_snake_Y2 , fill = "red",outline='orange')
     
     
     
@@ -176,6 +176,8 @@ def serpent_mort(NouvelleTete):
         game_over = pygame.mixer.Sound("mixkit-retro-game-over-1947.wav")
         empty_channel2 = pygame.mixer.find_channel()
         empty_channel2.play(game_over)
+        sleep(2.5)
+        f.quit()
 def score_update():
     
     global SCORE
@@ -195,12 +197,12 @@ def mise_a_jour_snake():
     SNAKE.insert(0, NouvelleTete)
 
     if NouvelleTete == FRUIT:
-       
-        FRUIT = fruit_aleatoire()
-        score_update()
-        eat = pygame.mixer.Sound("_eat_.wav")
-        empty_channel = pygame.mixer.find_channel()
-        empty_channel.play(eat)
+        
+            FRUIT = fruit_aleatoire()
+            score_update()
+            eat = pygame.mixer.Sound("_eat_.wav")
+            empty_channel = pygame.mixer.find_channel()
+            empty_channel.play(eat)
     else:
         SNAKE.pop()   
  
@@ -215,7 +217,7 @@ def boucle():
 
     grille.delete("all")
     dessine_fruit()
-
+    
     draw_snake(SNAKE)
 
     if PERDU:
@@ -227,7 +229,7 @@ def boucle():
 
     else:
         
-        f.after(100, boucle)   
+        f.after(80, boucle)   
 
 SCORE = 0
 
