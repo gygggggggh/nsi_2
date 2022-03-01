@@ -201,6 +201,9 @@ def boucle():
     
     global HIGHSCORE , SCORE
     
+    f.update
+    f.update_idletasks()
+    
     mise_a_jour_snake()
 
     grille.delete("all")
