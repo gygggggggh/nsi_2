@@ -104,19 +104,13 @@ def fruit_aleatoire():
 
 def dessine_fruit():
     global FRUIT
-    try:
-        x, y = FRUIT
-    except TypeError:
-        FRUIT = fruit_aleatoire()
+    while True : 
         try:
             x, y = FRUIT
+            break
         except TypeError:
             FRUIT = fruit_aleatoire()
-            try:
-                x, y = FRUIT
-            except TypeError:
-                x, y = 0,0
-        
+    
         
     Origine_snake_X1 = x * Largeur_Case
     Origine_snake_Y1 = y * Hauteur_Case
@@ -231,7 +225,7 @@ def boucle():
 
     else:
         
-        f.after(80, boucle)   
+        f.after(100, boucle)   
 
 SCORE = 0
 
