@@ -197,6 +197,7 @@ def mise_a_jour_snake():
             FRUIT = fruit_aleatoire()
             score_update()
             eat = pygame.mixer.Sound("_eat_.wav")
+            eat.set_volume(0.5)
             empty_channel = pygame.mixer.find_channel()
             empty_channel.play(eat)
     else:
@@ -216,7 +217,7 @@ def boucle():
     
     draw_snake(SNAKE)
 
-    if PERDU:
+    if PERD
         score.itemconfigure(texte,text = "score : " + str(SCORE) , font = ('Times', '15', 'bold '))
         if SCORE > int(HIGHSCORE) :
             HIGHSCORE = SCORE
