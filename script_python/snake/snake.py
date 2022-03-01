@@ -30,7 +30,7 @@ hauteur_ecran = f.winfo_screenheight()
 MOUVEMENT = (0, 0)
 
 SCORE = 0
-ier
+
 PERDU = 0
 
 with open('script_python/snake/score.txt','r') as obj :
@@ -81,7 +81,7 @@ def case_aleatoire():
 
 def draw_snake(snake):
     for case in snake:
-        (x, y) = case
+        x, y = case
         remplir_case(x, y)
 
 
@@ -161,26 +161,19 @@ f.bind("<z>", haut)
 f.bind("<s>", bas)
 
 def serpent_mort(NouvelleTete):
-    pass
     global PERDU
     
     NouvelleTeteX, NouvelleTeteY = NouvelleTete
     
     if (etre_dans_snake(NouvelleTete) and MOUVEMENT != (0, 0)) or NouvelleTeteX < 0 or NouvelleTeteY < 0 or NouvelleTeteX >= nombre_grille or NouvelleTeteY >= nombre_grille:
         PERDU = 1
-        empty_channel4.stop()
-        game_over = pygame.mixer.Sound("script_python/snake/mixkit-retro-game-over-1947.wav")
-        empty_channel2 = pygame.mixer.find_channel()
-        empty_channel2.play(game_over)
-        sleep(2.5)
-        f.quit()
+
 def score_update():
     
     global SCORE
 
     SCORE += 100
     score.itemconfigure(texte,text = "score: " + str(SCORE) , font = ('Times', '15', 'bold '))
-    score.pack(side="top")
     
 def mise_a_jour_snake():
     
@@ -197,8 +190,8 @@ def mise_a_jour_snake():
             FRUIT = fruit_aleatoire()
             score_update()
             eat = pygame.mixer.Sound("script_python/snake/_eat_.wav")
-            eat.set_volume(0.5)
             empty_channel = pygame.mixer.find_channel()
+            eat.set_volume(0.5)
             empty_channel.play(eat)
     else:
         SNAKE.pop()   
@@ -208,11 +201,10 @@ def boucle():
     
     global HIGHSCORE , SCORE
     
-    f.update
-    f.update_idletasks()
     mise_a_jour_snake()
 
     grille.delete("all")
+    
     dessine_fruit()
     
     draw_snake(SNAKE)
@@ -223,7 +215,12 @@ def boucle():
             HIGHSCORE = SCORE
             with open("score.txt","w",) as obj :
                 obj.write(str(HIGHSCORE))
-
+        empty_channel4.stop()
+        game_over = pygame.mixer.Sound("script_python/snake/mixkit-retro-game-over-1947.wav")
+        empty_channel2 = pygame.mixer.find_channel()
+        empty_channel2.play(game_over)
+        sleep(2.5)
+        f.quit()
     else:
         
         f.after(100, boucle)   
@@ -234,6 +231,7 @@ PERDU = 0
 
 SNAKE = [case_aleatoire()]
 FRUIT = fruit_aleatoire()
+
 f.after(0, boucle()) 
 
   
