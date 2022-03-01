@@ -6,16 +6,16 @@ from time import sleep
 pygame.init()
 
 
-musique = pygame.mixer.Sound("musique.wav")
+musique = pygame.mixer.Sound("script_python/snake/musique.wav")
 empty_channel4 = pygame.mixer.find_channel()
 empty_channel4.play(musique , loops = -1)
 
 
-turn = pygame.mixer.Sound("_turn_.ogg")
+turn = pygame.mixer.Sound("script_python/snake/_turn_.ogg")
 
 f = Tk()
 f.title('snake')
-f.iconphoto(True, PhotoImage(file='snake.png'))
+f.iconphoto(True, PhotoImage(file='script_python/snake/snake.png'))
 
 
 # taille de la fenêtre
@@ -30,10 +30,10 @@ hauteur_ecran = f.winfo_screenheight()
 MOUVEMENT = (0, 0)
 
 SCORE = 0
-
+ier
 PERDU = 0
 
-with open('score.txt','r') as obj :
+with open('script_python/snake/score.txt','r') as obj :
          HIGHSCORE = obj.readline()
         
 
@@ -169,7 +169,7 @@ def serpent_mort(NouvelleTete):
     if (etre_dans_snake(NouvelleTete) and MOUVEMENT != (0, 0)) or NouvelleTeteX < 0 or NouvelleTeteY < 0 or NouvelleTeteX >= nombre_grille or NouvelleTeteY >= nombre_grille:
         PERDU = 1
         empty_channel4.stop()
-        game_over = pygame.mixer.Sound("mixkit-retro-game-over-1947.wav")
+        game_over = pygame.mixer.Sound("script_python/snake/mixkit-retro-game-over-1947.wav")
         empty_channel2 = pygame.mixer.find_channel()
         empty_channel2.play(game_over)
         sleep(2.5)
@@ -196,7 +196,7 @@ def mise_a_jour_snake():
         
             FRUIT = fruit_aleatoire()
             score_update()
-            eat = pygame.mixer.Sound("_eat_.wav")
+            eat = pygame.mixer.Sound("script_python/snake/_eat_.wav")
             eat.set_volume(0.5)
             empty_channel = pygame.mixer.find_channel()
             empty_channel.play(eat)
@@ -217,7 +217,7 @@ def boucle():
     
     draw_snake(SNAKE)
 
-    if PERD
+    if PERDU:
         score.itemconfigure(texte,text = "score : " + str(SCORE) , font = ('Times', '15', 'bold '))
         if SCORE > int(HIGHSCORE) :
             HIGHSCORE = SCORE
