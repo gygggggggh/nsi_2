@@ -57,4 +57,3 @@ def compare_table(t1,t2):
 t1 = [1,2,3,4]
 t2 = [2,1,3,4]
 
-g
