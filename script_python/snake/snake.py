@@ -177,7 +177,7 @@ def serpent_mort(NouvelleTete):
     global PERDU
     
     NouvelleTeteX, NouvelleTeteY = NouvelleTete
-    
+      
     if (etre_dans_snake(NouvelleTete) and MOUVEMENT != (0, 0)) or NouvelleTeteX < 0 or NouvelleTeteY < 0 or NouvelleTeteX >= nombre_grille or NouvelleTeteY >= nombre_grille:
         PERDU = 1
 
@@ -214,7 +214,8 @@ def mise_a_jour_snake():
 def boucle():
     '''mets a jours l'affichage et les event clavier , mets a jour le serpent , 
     si PERDU affiche le score finale et si le score finale est supérieur aux HIGHSCORE , 
-    l'enregistre dans score.txt sinon le jeu continue''' 
+    l'enregistre dans score.txt sinon le jeu continue
+    ''' 
     
     global HIGHSCORE , SCORE
     

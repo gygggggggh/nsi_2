@@ -64,7 +64,7 @@ def element_min(tab) :
             m = tab[i]
     return m
 
-#cexecuter_fonction(element_min,'r','Recherche du min')
+#executer_fonction(element_min,'r','Recherche du min')
 
 # ===================================
 # tri_selection
@@ -91,7 +91,7 @@ def tri_insertion(tab) :
             i = i-1
         tab[i+1] = elt_a_placer
 
-#executer_fonction(tri_insertion,'b','Tri par insertion')
+executer_fonction(tri_insertion,'b','Tri par insertion')
 
 
 # ===================================
