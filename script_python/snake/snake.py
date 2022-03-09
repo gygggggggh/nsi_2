@@ -6,10 +6,11 @@ from time import sleep
 pygame.init()
 
 # la musique est desactiver par defaut 
-'''musique = pygame.mixer.Sound("script_python/snake/musique.wav")
+''musique = pygame.mixer.Sound("script_python/snake/musique.wav")
 empty_channel4 = pygame.mixer.find_channel()
 empty_channel4.play(musique , loops = -1)'''
 
+speed = int(input("chosis"))
 
 turn = pygame.mixer.Sound("script_python/snake/_turn_.ogg")
 
@@ -245,7 +246,7 @@ def boucle():
         f.quit()
     else:
         
-        f.after(100, boucle)   
+        f.after(speed, boucle)   
 
 SCORE = 0
 
