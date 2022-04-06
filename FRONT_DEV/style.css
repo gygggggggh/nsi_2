@@ -13,3 +13,9 @@ table {
     border: 10px solid rgb(101, 185, 76);
     background: fixed rgb(49, 182, 171);
 }
+
+.b {
+    background-origin: padding-box;
+    color: rgb(255, 0, 0);
+
+}
