@@ -3,7 +3,10 @@ import pygame
 from random import randint
 from time import sleep
 
+
 pygame.init()
+pygame.mixer.init() 
+SPEED = 145
 
 speed = int(input("chosis"))
 turn = pygame.mixer.Sound("musique.wav")
@@ -186,8 +189,8 @@ def score_update():
     
 def mise_a_jour_snake():
     ''' mets a jour le serpent en prenant l'ancienneTete , le mouvement  et verfie si le serpent est mort 
-    de plus si le serpent mange recrée un fruit et agrandit le serpent '''
-    global SNAKE, FRUIT
+    de plus si le serpent mange recrée un fruit et agrandit le serpent et augmente la vitesse '''
+    global SNAKE, FRUIT , SPEED
 
     (AncienneTeteX, AncienneTeteY) = SNAKE[0]
     MouvementX, MouvementY = MOUVEMENT
@@ -203,17 +206,21 @@ def mise_a_jour_snake():
             empty_channel = pygame.mixer.find_channel()
             eat.set_volume(0.5)
             empty_channel.play(eat)
+            SPEED -= 1
+            print(SPEED)
     else:
         SNAKE.pop()   
  
- 
+
+       
+   
 def boucle():
     '''mets a jours l'affichage et les event clavier , mets a jour le serpent , 
     si PERDU affiche le score finale et si le score finale est supérieur aux HIGHSCORE , 
     l'enregistre dans score.txt sinon le jeu continue
     ''' 
     
-    global HIGHSCORE , SCORE
+    global HIGHSCORE , SCORE 
     
     f.update
     f.update_idletasks()
