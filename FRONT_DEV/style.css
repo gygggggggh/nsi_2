@@ -1,0 +1,15 @@
+p {
+    color: red;
+    font-weight: bold;
+
+}
+
+td {
+    border: 1px solid blue;
+    text-align: center;
+}
+
+table {
+    border: 10px solid rgb(101, 185, 76);
+    background: fixed rgb(49, 182, 171);
+}

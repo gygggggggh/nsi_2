@@ -5,19 +5,14 @@ from time import sleep
 
 pygame.init()
 
-# la musique est desactiver par defaut 
-''musique = pygame.mixer.Sound("script_python/snake/musique.wav")
-empty_channel4 = pygame.mixer.find_channel()
-empty_channel4.play(musique , loops = -1)'''
-
 speed = int(input("chosis"))
-
-turn = pygame.mixer.Sound("script_python/snake/_turn_.ogg")
-
+turn = pygame.mixer.Sound("musique.wav")
 f = Tk()
 f.title('snake')
-f.iconphoto(True, PhotoImage(file='script_python/snake/snake.png'))
 
+musique = pygame.mixer.Sound("musique.wav")
+empty_channel4 = pygame.mixer.find_channel()
+empty_channel4.play(musique)
 
 # taille de la fenêtre
 hauteur_f = 500
@@ -34,7 +29,7 @@ SCORE = 0
 
 PERDU = 0
 
-with open('script_python/snake/score.txt','r') as obj :
+with open('./score.txt','r') as obj :
          HIGHSCORE = obj.readline()
         
 
@@ -204,7 +199,7 @@ def mise_a_jour_snake():
         
             FRUIT = fruit_aleatoire()
             score_update()
-            eat = pygame.mixer.Sound("script_python/snake/_eat_.wav")
+            eat = pygame.mixer.Sound("_eat_.wav")
             empty_channel = pygame.mixer.find_channel()
             eat.set_volume(0.5)
             empty_channel.play(eat)
@@ -237,9 +232,8 @@ def boucle():
             HIGHSCORE = SCORE
             with open("score.txt","w",) as obj :
                 obj.write(str(HIGHSCORE))
-         # cette fonction eteint la musqiue pour le game over
-         #empty_channel4.stop()
-        game_over = pygame.mixer.Sound("script_python/snake/mixkit-retro-game-over-1947.wav")
+        empty_channel4.stop()
+        game_over = pygame.mixer.Sound("mixkit-retro-game-over-1947.wav")
         empty_channel2 = pygame.mixer.find_channel()
         empty_channel2.play(game_over)
         sleep(2.5)
