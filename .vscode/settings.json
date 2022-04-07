@@ -48,5 +48,6 @@
         "voyelle",
         "voyelles"
     ],
-    "python.pythonPath": "/bin/python"
+    "python.pythonPath": "/bin/python",
+    "editor.formatOnSave": true
 }
