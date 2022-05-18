@@ -1,7 +1,7 @@
 
 from random import randint, shuffle
 from time import *
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 
 # création des tableaux
@@ -104,7 +104,7 @@ def tri_bulle (tab):
                 tab[j], tab[j+1] = tab[j+1], tab[j]
         i = i-1
 
-#executer_fonction(tri_bulle,'r','Tri bulle')
+executer_fonction(tri_bulle,'r','Tri bulle')
 
 
 # ========================================================================================

@@ -1,0 +1,15 @@
+ li {
+     border: 20 px solid green;
+ }
+ 
+ ul {
+     border: 20 px solid rgb(28, 0, 128);
+ }
+ 
+ ol {
+     border: 20 px solid rgb(139, 25, 192);
+ }
+ 
+ p {
+     border: 20 px solid green;
+ }

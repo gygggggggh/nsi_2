@@ -6,7 +6,7 @@ from time import sleep
 
 pygame.init()
 pygame.mixer.init() 
-SPEED = 145
+SPEED = 100
 
 speed = int(input("chosis"))
 turn = pygame.mixer.Sound("musique.wav")
@@ -64,7 +64,7 @@ Hauteur_Case = (450 / nombre_grille)
 
 
 def remplir_case (x, y):
-    '''cette fonction  prend pour parametre x et y , deux entiers , puis crée un caré qui 
+    '''cette fonction  prend pour parametre x et y , deux entiers , puis crée un carré qui 
     fabrique le  serpent'''
     Origine_snake_X1 = x * Largeur_Case
     Origine_snake_Y1 = y * Hauteur_Case
